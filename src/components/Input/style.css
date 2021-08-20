@@ -1,0 +1,15 @@
+.input {
+    border: 4px solid black;
+    width: 50%;
+    max-width: 484px;
+    min-width: 260px;
+    height: 12rem;
+    margin: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-dragging {
+    border: 4px dashed gray;
+}

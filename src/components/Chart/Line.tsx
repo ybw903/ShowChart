@@ -1,9 +1,13 @@
 import { axisBottom, axisRight,  scaleBand, scaleLinear, select } from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import './style.css';
-export default function Line() {
-    const [data, setData] = useState([25,30,45,60,20,65,75]);
+
+interface dataProps {
+    data: Array<Object>
+}
+export default function Line({data}:dataProps) {
+
     const svgRef = useRef<SVGSVGElement|null>(null);
     useEffect(()=> {
         const svg = select(svgRef.current);
@@ -43,8 +47,8 @@ export default function Line() {
             .attr("y",-150)
             .attr("width", xScale.bandwidth())
             .transition()
-            .attr("fill",colorScale)
-            .attr("height",value => 150 - yScale(value));
+            //.attr("fill",colorScale)
+            .attr("height",(value,index) => 150 - yScale(index));
 
     }, [data]);
     return (
