@@ -1,0 +1,6 @@
+.body-wrapper {
+    border-radius: 24px;
+    overflow-x: hidden;
+    background-color: white;
+    width: 80%;
+}

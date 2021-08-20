@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import XLSX from 'xlsx';
 import Chart from '../Chart';
+import Line from '../Chart/Line';
 export default function Content() {
 
     const fileHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ export default function Content() {
         <div className='content'>
             <input type='file' onChange={fileHandler}/>
             <Chart/>
+            <Line/>
         </div>
     );
 }
