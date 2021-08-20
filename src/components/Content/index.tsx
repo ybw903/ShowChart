@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import XLSX from 'xlsx';
 import Chart from '../Chart';
 import Line from '../Chart/Line';
 import ChartSelection from '../ChartSelection';
 export default function Content() {
+
+    const [seletedChart, setSelectedChart] = useState("line");
+
+    const selectedChartHandler =(e:React.MouseEvent) => {
+        const {currentTarget} = e;
+        setSelectedChart(currentTarget.id); 
+    }
 
     const fileHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         const file = e.currentTarget.files?.[0];
@@ -28,7 +35,7 @@ export default function Content() {
     return(
         <div className='content'>
             <input type='file' onChange={fileHandler}/>
-            <ChartSelection/>
+            <ChartSelection selectedChart={seletedChart} selectedChartHandler={selectedChartHandler}/>
             <Chart/>
             <Line/>
         </div>
