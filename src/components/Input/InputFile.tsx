@@ -2,7 +2,11 @@ import React, {useState } from "react";
 import XLSX from 'xlsx';
 import './style.css';
 
-export default function InputFile() {
+interface inputFileProps {
+    setDataHandler: (data:any) =>void
+}
+
+export default function InputFile({setDataHandler}:inputFileProps) {
     const [dragging,setDragging] = useState<boolean>(false);
 
 
@@ -31,6 +35,7 @@ export default function InputFile() {
         }
         e.dataTransfer.clearData();
         setDragging(false);
+
     }
 
     const fileHandler = (files: FileList) => {
@@ -46,8 +51,7 @@ export default function InputFile() {
             const wsname = wb.SheetNames[0];
             const ws = wb.Sheets[wsname];
             const data = XLSX.utils.sheet_to_json(ws);
-
-            console.log(data);
+            setDataHandler(data);
         }
     }
 
@@ -57,7 +61,7 @@ export default function InputFile() {
             onDragLeave ={handleDragLeave} 
             onDrop={handleDrop} 
             onDragOver={handleDragOver}>
-                
+
             파일을 올려주세요.
         </div>
     )

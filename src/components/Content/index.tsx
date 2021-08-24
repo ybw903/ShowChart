@@ -5,14 +5,12 @@ import ChartSelection from '../ChartSelection';
 import InputFile from '../Input/InputFile';
 
 type data = {
-    index: number
-    label: string
-    value: number[]
+    [key: string]: string
 }
 
 export default function Content() {
 
-    const [data, setData] = useState([25,30,45,60,20,65,75]);
+    const [data, setData] = useState<data[]>([]);
     const [seletedChart, setSelectedChart] = useState("");
 
     const selectedChartHandler =(e:React.MouseEvent) => {
@@ -20,9 +18,13 @@ export default function Content() {
         setSelectedChart(currentTarget.id); 
     }
 
+    const setDataHandler = (data:any) => {
+        setData(data);
+    }
+
     return(
         <div className='content'>
-            <InputFile/>
+            <InputFile setDataHandler={setDataHandler}/>
             <ChartSelection selectedChart={seletedChart} selectedChartHandler={selectedChartHandler}/>
             <Chart selectedChart={seletedChart} data={data}/>
         </div>

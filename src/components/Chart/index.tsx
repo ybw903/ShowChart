@@ -1,18 +1,20 @@
 import { useEffect, useRef } from "react";
 import {select} from 'd3';
-import Line from "./Line";
+import Bar from "./Bar";
 
 interface selectedChartProps {
     selectedChart: string,
-    data: Array<Object>
+    data: Array<{[key: string]: string}>
 }
 
 export default function Chart({selectedChart, data}:selectedChartProps) {
 
+
+
     return (
         <div>
-            {selectedChart === 'line' ?
-                <Line data={data}/>:
+            {selectedChart === 'bar' ?
+                <Bar data={data}/>:
                 ''}
         </div>
     )
