@@ -13,7 +13,7 @@ export default function Chart({selectedChart, data}:selectedChartProps) {
 
     return (
         <div>
-            {selectedChart === 'bar' ?
+            { (data.length!==0 && selectedChart === 'bar') ?
                 <Bar data={data}/>:
                 ''}
         </div>

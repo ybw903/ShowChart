@@ -13,8 +13,6 @@ export default function Bar({data}:dataProps) {
     const svgRef = useRef<SVGSVGElement|null>(null);
     useEffect(()=> {
         const svg = select(svgRef.current);
-        console.log(data);
-
         const numberArr = [];
         for(let key in data[0]) {
             if( typeof data[0][key] === 'number') {
