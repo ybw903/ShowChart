@@ -16,6 +16,7 @@ export default function Content() {
     const selectedChartHandler =(e:React.MouseEvent) => {
         const {currentTarget} = e;
         setSelectedChart(currentTarget.id); 
+        console.log(currentTarget.id);
     }
 
     const setDataHandler = (data:any) => {
